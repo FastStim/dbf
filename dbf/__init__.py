@@ -4142,7 +4142,7 @@ def retrieve_character(bytes, fielddef, memo, decoder):
     data = to_bytes(bytes)
     if fielddef[FLAGS] & BINARY:
         return data
-    data = fielddef[CLASS](decoder(data)[0])
+    data = fielddef[CLASS](data.decode("utf-8"))
     if not data.strip():
         cls = fielddef[EMPTY]
         if cls is NoneType:
